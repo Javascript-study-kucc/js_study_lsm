@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function (){ 
     do_everything();
 })
-function setData(list) { //학점 Array를 받아서 Chart안에 들어갈 dataset을 반환 
+function setData(list) { //학점 Array를 받아서 Chart에 들어갈 dataset을 반환 
         let data_set=[];
         for (let i=0; i<list.length; i++){
             data_set.push({x:i, y:list[i]})
         }
         return data_set
     }
-function do_everything () { //todo: do everything으로 깡그리 묶어놓은 것 수정하기
+function do_everything () { //todo: do_everything으로 묶어놓은 것 수정하기
     let ctx = document.getElementById('mybarChart');
     let ctx2 =document.getElementById('myscatterChart');
     let barChart=new Chart(ctx, {
