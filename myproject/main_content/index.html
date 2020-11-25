@@ -36,40 +36,32 @@
     </label>
 
     <h1><div id="major_name"></div></h1>
-    
     <div>
-    <table border="1"> <!-- 표 선 굵기는 1px -->
-      <caption><b>이중전공 요구 학점</b></caption> <!-- 표 제목 -->
-      <tr>
-        <td>전공선택</td>
-        <td id='jeonsun'></td>
-      </tr>
-      <tr>
-        <td>전공필수</td>
-        <td id='jeonpil'></td>
-      </tr>
-      <tr>
-      <td id='jeonhap'>계</td>
-      <td></td>
-    </tr>
-        </table>
-        해당 학과를 이중전공할 시 요구되는 학점 취득 조건입니다.
-      </div>
+      <div id='jeon_table'></div>
+    </div>
       
-        <h4>이중 진입 전 학습이 필요한 과목</h4>
-        <div></div>
+        <h4>이중 진입 전 학습이 필요한 내용</h4>
+        <div>
         <div class='bookshelf'>
-        <div class='book_unit'>
-          줌달의 일반화학<br>
-          <img src='zumdahl.jpg' class='book_img'>
-        </div>
-        <div class='book_unit'>
-          캠벨 생명과학<br>
-          <img src='campbell.jpg' class='book_img'>
-        </div>
+          <table border='1' class='book_unit'>
+            <tr><td>줌달의 일반화학</td></tr>
+            <tr><td><img src='zumdahl.jpg' class='book_img'></td></tr>
+          </table>
+          <table border='1' class='book_unit'>
+            <tr><td>캠벨 생명과학</td></tr>
+            <tr><td><img src='campbell.jpg' class='book_img'></td></tr>
+          </table>
+          <table border='1' class='book_unit'>
+            <tr><td>할리데이 일반물리학</td></tr>
+            <tr><td><img src='haliday.jpg' class='book_img'></td></tr>
+          </table>
+          <table border='1' class='book_unit'>
+            <tr><td>스튜어트 미적분학</td></tr>
+            <tr><td><img src='stewart.jpg' class='book_img'></td></tr>
+          </table>
       </div>
-      과에 대한 더 자세한 정보를 원한다면..<br>
-      -><span id='link_'></span>  <!-- 이중 링크 -->
+      </div>
+      <span id='link_'></span>  <!-- 이중 링크 -->
 <!-- 보환융 선택 42, 필수 0 -->
 <!-- 바시의 선택 42, 필수 0 -->
 <!-- 바의공 선택 17, 필수 31 -->
@@ -90,9 +82,6 @@
     학점 입력: <input type='number' id='gpa' min=0.0 max=4.50 step=0.01></input><br>
     <input type='submit'>
 </form>
-{% for post in posts %}
-    {{ post }}
-{% endfor %}
 <script src="index.js"></script>
     <link rel="stylesheet" href="index.css" />
   </body>
