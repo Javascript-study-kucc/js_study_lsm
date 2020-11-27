@@ -1,14 +1,14 @@
 function main() {
 const target=document.getElementById('major_select'); 
-let major_text=target.options[target.selectedIndex].text;
-let major_value=target.options[target.selectedIndex].value;
-document.getElementById('major_name').textContent=major_text
+let major_text=target.options[target.selectedIndex].text; //text를 얻고
+let major_value=target.options[target.selectedIndex].value; //value를 얻고
+document.getElementById('major_name').textContent=major_text //보건환경융합과학부와 같은 과의 한글 이름 표시
 document.getElementById('link_').innerHTML=`과에 대한 더 자세한 정보를 원한다면..<br>
 -><a href=${get_link(major_value)}, target="_blank"> ${major_text} 홈페이지</a>`
-document.getElementById('jeon_table').innerHTML=`<table border="1">
+document.getElementById('jeon_table').innerHTML=`<table border="1" class='jeon'>
 <caption><b>이중전공 요구 학점</b></caption>
 <tr>
-  <td>전공선택</td>
+  <td >전공선택</td>
   <td>${get_hakjum(major_value)[0]}</td>
 </tr>
 <tr>
@@ -21,7 +21,8 @@ document.getElementById('jeon_table').innerHTML=`<table border="1">
 </tr>
   </table>
   `
-  document.getElementById('seonsu_gwamoks').innerHTML='d'
+  document.getElementById('book_explain').innerHTML=to_study_text(to_study(major_value)); //선수과목에 대한 설명과 추천 텍스트
+  document.getElementById('book_units').innerHTML=books_image(to_study(major_value)[1]); //책 이미지 테이블 받고
 }
 
 
@@ -55,19 +56,59 @@ function get_hakjum (mv){ //mv(major_value) 받아서 전선, 전필, 전합이 
     return jeon_list
 }
 
-function get_gwamok(mv){ //학과별 선수과목 리턴
-  let gwamoks=[];
+function to_study(mv){ //학과별 선수과목 리턴
+  let subjects=[]
+  let books=[]
   if (mv==='bme'){
-    gwamoks=['stewart', 'haliday', 'zumdahl']
+    subjects=["미적분학", "일반물리학", "일반화학"];
+    books=['stewart', 'haliday', 'zumdahl']
   } else if (mv==='bsms'){
-    gwamoks=['zumdahl','campbell']
+    subjects=['일반화학', '일반생물학']
+    books=['zumdahl', 'campbell']
     } else if (mv==='hes'){
-      gwamoks=['zumdahl','campbell']
+      subjects=['일반화학', '일반생물학']
+    books=['zumdahl', 'campbell']
     } else { //hpm
-      gwamoks=[]
+      subjects=[]
+      books=[]
     }
-    return gwamoks
+    return [subjects, books]
   }
+
+  function to_study_text(subject_book) { //아래와 같이 선수과목과 추천교재에 대한 텍스트 반환
+    let text='';
+    if (subject_book[0][0]===undefined){ //books 어레이의 0번째 요소가 undefined라면. 즉, 아예 어레이가 비워져 있다면.
+      text='선수과목은 없습니다.'
+    }else{
+    text=`<h4>이중 진입 전 학습이 필요한 내용</h4> 선수과목은 ${String(subject_book[0])}이며, 각 과목에 대한 추천교재는 ${String(subject_book[1])}입니다.`
+    }
+    return text
+  }
+
+  function books_image(books) { //책 이미지가 들어있는 테이블 리턴
+    let text=''
+    if (books.includes('stewart')){
+      text+=`<table border='1' class='book_unit'>
+      <tr><td>스튜어트 미적분학</td></tr>
+      <tr><td><img src='stewart.jpg' class='book_img'></td></tr>
+    </table>`}
+    if (books.includes('haliday')){
+      text+=`<table border='1' class='book_unit'>
+      <tr><td>할리데이 일반물리학</td></tr>
+      <tr><td><img src='haliday.jpg' class='book_img'></td></tr>
+    </table>`}
+      if (books.includes('zumdahl')){
+        text+=`<table border='1' class='book_unit'>
+    <tr><td>줌달의 일반화학</td></tr>
+    <tr><td><img src='zumdahl.jpg' class='book_img'></td></tr>
+  </table>`}
+  if (books.includes('campbell')){
+    text+=`<table border='1' class='book_unit'>
+    <tr><td>캠벨 생명과학</td></tr>
+    <tr><td><img src='campbell.jpg' class='book_img'></td></tr>
+  </table>`}
+return text
+}
 
 // 물리학 -> 바의공, 보환융
 // 화학 -> 바의공, 보환융, 바시의
@@ -75,3 +116,5 @@ function get_gwamok(mv){ //학과별 선수과목 리턴
 // 지구환경과학 -> 보환융
 // 정보학 -> 보정관
 // 역학 -> 보환융, 보정관
+
+
