@@ -1,4 +1,3 @@
-const { fstat } = require('fs');
 let http = require('http');
 let fs = require('fs')
 
@@ -24,9 +23,9 @@ server.on('request', function(req, res) {
 
     let filename='house.png';
     fs.readFile(filename, function(err, data) { //파일을 모두 읽으면 콜백 함수 안의 data 객체로 파일 내용 전달.
-    res.writeHead(200, {"Content-Type":"image/png"});
-    res.write(data);
-    res.end();
+        res.writeHead(200, {"Content-Type": "image/png"}); //house.png의 파일 위치는 nodejs_book 안, NodeExample1 밖이어야 한다.
+        res.write(data);
+        res.end();
     });
 });
     
