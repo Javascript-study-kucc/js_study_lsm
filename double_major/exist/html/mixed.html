@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <!-- 그래프 겹쳐진 것 그리기 -->
+    <canvas id='ww'></canvas>
+    <script src="../js/Chart.js"></script>
+    <script>
+        let ctx=document.getElementById('ww')
+        let mixedChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Bar Dataset',
+            data: [10, 20, 30, 40],
+            // this dataset is drawn below
+            order: 1
+        }, {
+            label: 'Line Dataset',
+            data: [10, 10, 10, 10],
+            type: 'line',
+            // this dataset is drawn on top
+            order: 2
+        }],
+        labels: ['January', 'February', 'March', 'April']
+    },
+    options: options
+});</script>
+</body>
+</html> 
+<!-- 그래프가 안 그려진다. -->

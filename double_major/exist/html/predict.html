@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이중전공 합불 분석</title>
+    <link rel='stylesheet' href='../css/predict.css'>
+</head>
+<body>
+    <!-- <label for="major_select"
+      >전공 선택<br />
+      <select id="major_select" name="major_select" onchange="main()">
+        <optgroup label='보건과학대학 전공'>
+        <option value="bme" selected>바이오의공학부</option>
+        <option value="bsms">바이오시스템의과학부</option>
+        <option value="hes">보건환경융합과학부</option>
+        <option value="hpm">보건정책관리학부</option>
+    </optgroup>
+      </select>
+    </label> -->
+    <h3>보건환경융합과학부 이중전공 학점 데이터</h3>
+    <canvas id="mybarChart" width="500vh", height="300vw"></canvas> <!-- 합격자 평균, 불합격자 평균, 수평으로 지원자 점수 선 긋기 -->
+    <canvas id="mylineChart" width="500vh", height="300vw"></canvas> <!-- 합격자와 불합격자 점수 선 그래프, 수평으로 지원자 점수 선 긋기 -->
+    <div class='notice'>#본 데이터는 최근 5년 동안의 것임.</div>
+    <div id='result'></div>
+    <script src="../js/Chart.js"></script> 
+    <script src='../js/predict.js'></script>
+</body>
+</html>

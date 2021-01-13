@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고려대학교 보건과학대학 이중전공 아카이브</title>
+  </head>
+  <body>
+    <p id="sangdan">
+    <b>고려대학교 보건과학대학 아카이브</b><hr>
+  </p>
+
+
+    <div>
+      고려대학교 보건과학대학에 이중전공 지원을 희망하는 학생들을 위한 아카이브입니다.<br />
+      <ul>
+        <li>
+          <a href="https://registrar.korea.ac.kr/eduinfo/info/major_double.do"
+            target="_blank">이중전공 제도란?</a>
+        </li>
+        <li>
+            <a href="https://chs.korea.ac.kr/chs/index.do"
+            target="_blank">보건과학대학 홈페이지</a>
+        </li>
+      </ul>
+    </div>
+
+    <label for="major_select"
+      >전공 선택<br />
+      <select id="major_select" name="major_select" onchange="main()">
+        <optgroup label='보건과학대학 전공'>
+        <option value="bme" selected>바이오의공학부</option>
+        <option value="bsms">바이오시스템의과학부</option>
+        <option value="hes">보건환경융합과학부</option>
+        <option value="hpm">보건정책관리학부</option>
+    </optgroup>
+      </select>
+    </label>
+
+    <h1><div id="major_name"></div></h1>
+    
+      <div id='jeon_table'></div>
+    
+      <div id='to_study'></div>
+        
+        <div id='book_explain'></div>
+          <span id='book_units'></span>
+      <br>
+      <br>
+      <span id='link_'></span>  <!-- 학과 홈피 링크 -->
+<!-- 보환융 선택 42, 필수 0 -->
+<!-- 바시의 선택 42, 필수 0 -->
+<!-- 바의공 선택 17, 필수 31 -->
+<!-- 보정관 선택 39, 필수 3 -->
+
+    <!-- 여기부터 이중전공 합격 예측 -->
+<hr>
+<form method='POST' action="predict.html" target="_blank">
+  <h3>이중전공 합격 예측 시스템</h1>
+    <b>희망학과</b>와 <b>학점</b>을 입력하시면 해당학과에 대한 이중전공 합격 예측 정보를 알려드립니다.<br>
+    <label for='app_cho'>
+    희망학과:
+    <input type='radio' name='bme'>바이오의공학부</input> 
+    <input type='radio' name='bsms'>바이오시스템의과학부</input> 
+    <input type='radio' name='hes'>보건환경융합과학부</input>
+    <input type='radio' name='hpm'>보건정책관리학부</input></label><br>
+    학점 입력: <input type='number' id='gpa' min=0.0 max=4.50 step=0.01></input><br> 
+    <input type='submit'>
+</form>
+<script src="../js/index.js"></script>
+    <link rel="stylesheet" href="../css/index.css" />
+  </body>
+</html>
